@@ -50,7 +50,13 @@ describe GildedRose do
         good_milk = Item.new("Good milk", 10, 60)
         gilded_rose = GildedRose.new
         expect { gilded_rose.add_item(good_milk) }.to raise_error "Good milk's quality cannot be more than 50"
-      end
+    end
+
+    it "throws error if normal item being added has quality <=0" do
+        bad_milk = Item.new("Bad milk", 10, -1)
+        gilded_rose = GildedRose.new
+        expect { gilded_rose.add_item(bad_milk) }.to raise_error "Bad milk's quality cannot be be 0 or less"
+    end
 
 
     #Item quality can never be below zero

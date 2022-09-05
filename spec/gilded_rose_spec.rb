@@ -28,4 +28,10 @@ describe GildedRose do
     expect { gilded_rose.add_item(fake_milk) }.to raise_error "Milk's quality cannot be more than 50"
   end
 
+  it "throws error if normal item being added has quality <=0" do
+    fake_milk = double :fake_milk, name: "Milk", sell_in: 10, quality: -1
+    gilded_rose = GildedRose.new
+    expect { gilded_rose.add_item(fake_milk) }.to raise_error "Milk's quality cannot be be 0 or less"
+  end
+
 end
