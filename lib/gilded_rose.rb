@@ -1,7 +1,15 @@
 class GildedRose
 
-  def initialize(items)
-    @items = items
+  def initialize()
+    @items = []
+  end
+
+  def items
+    @items
+  end
+
+  def add_item(item)
+    @items << item
   end
 
   def update_quality()
