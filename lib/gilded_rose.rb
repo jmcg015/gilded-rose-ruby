@@ -9,6 +9,7 @@ class GildedRose
   end
 
   def add_item(item)
+    raise "#{item.name}'s quality cannot be more than 50" if item.quality > 50
     @items << item
   end
 

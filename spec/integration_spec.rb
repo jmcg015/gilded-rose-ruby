@@ -46,7 +46,12 @@ describe GildedRose do
         expect(gilded_rose.items[0].quality).to eq 7
     end
 
-    #Item quality cannot be above 50 for normal items
+    it "throws error if normal item being added has quality above 50" do
+        good_milk = Item.new("Good milk", 10, 60)
+        gilded_rose = GildedRose.new
+        expect { gilded_rose.add_item(good_milk) }.to raise_error "Good milk's quality cannot be more than 50"
+      end
+
+
     #Item quality can never be below zero
-    #If sellIn date is below 0, item quality decreases twice as fast
 end
