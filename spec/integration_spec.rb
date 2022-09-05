@@ -26,6 +26,17 @@ describe GildedRose do
         expect(gilded_rose.items[0].sell_in).to eq 4
     end
 
+    it "decreases the sell_in by 1 on multiple normal items" do
+        glass_of_milk = Item.new("Glass of Milk", 5, 10)
+        sandwich = Item.new("Sandwich", 6, 20)
+        gilded_rose = GildedRose.new
+        gilded_rose.add_item(glass_of_milk)
+        gilded_rose.add_item(sandwich)
+        gilded_rose.update_quality()
+        expect(gilded_rose.items[0].sell_in).to eq 4
+        expect(gilded_rose.items[1].sell_in).to eq 5
+    end
+
     #Item quality cannot be above 50 for normal items
     #Item quality can never be below zero
     #If sellIn date is below 0, item quality decreases twice as fast
