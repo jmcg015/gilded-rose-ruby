@@ -1,6 +1,7 @@
 require 'simplecov'
 require 'simplecov-console'
 require 'gilded_rose'
+require 'item'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
