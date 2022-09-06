@@ -1,6 +1,6 @@
 describe GildedRose do
     it "decreases normal item quality by 1" do
-        glass_of_milk = Item.new("Glass of Milk", 5, 10)
+        glass_of_milk = NormalItem.new("Glass of Milk", 5, 10)
         gilded_rose = GildedRose.new
         gilded_rose.add_item(glass_of_milk)
         gilded_rose.update_quality()
@@ -8,8 +8,8 @@ describe GildedRose do
     end
 
     it "Lowers the quality of multiple normal items by 1" do 
-        glass_of_milk = Item.new("Glass of Milk", 5, 10)
-        sandwich = Item.new("Sandwich", 5, 20)
+        glass_of_milk = NormalItem.new("Glass of Milk", 5, 10)
+        sandwich = NormalItem.new("Sandwich", 5, 20)
         gilded_rose = GildedRose.new
         gilded_rose.add_item(glass_of_milk)
         gilded_rose.add_item(sandwich)
@@ -19,7 +19,7 @@ describe GildedRose do
     end
 
     it "decreases the sell_in by 1 on normal items" do
-        glass_of_milk = Item.new("Glass of Milk", 5, 10)
+        glass_of_milk = NormalItem.new("Glass of Milk", 5, 10)
         gilded_rose = GildedRose.new
         gilded_rose.add_item(glass_of_milk)
         gilded_rose.update_quality()
@@ -27,8 +27,8 @@ describe GildedRose do
     end
 
     it "decreases the sell_in by 1 on multiple normal items" do
-        glass_of_milk = Item.new("Glass of Milk", 5, 10)
-        sandwich = Item.new("Sandwich", 6, 20)
+        glass_of_milk = NormalItem.new("Glass of Milk", 5, 10)
+        sandwich = NormalItem.new("Sandwich", 6, 20)
         gilded_rose = GildedRose.new
         gilded_rose.add_item(glass_of_milk)
         gilded_rose.add_item(sandwich)
@@ -38,7 +38,7 @@ describe GildedRose do
     end
 
     it "reduces the quality by 2 after reaching the sell_in date" do
-        glass_of_milk = Item.new("Glass of Milk", 1, 10)
+        glass_of_milk = NormalItem.new("Glass of Milk", 1, 10)
         gilded_rose = GildedRose.new
         gilded_rose.add_item(glass_of_milk)
         gilded_rose.update_quality
@@ -47,13 +47,13 @@ describe GildedRose do
     end
 
     it "throws error if normal item being added has quality above 50" do
-        good_milk = Item.new("Good milk", 10, 60)
+        good_milk = NormalItem.new("Good milk", 10, 60)
         gilded_rose = GildedRose.new
         expect { gilded_rose.add_item(good_milk) }.to raise_error "Good milk's quality cannot be more than 50"
     end
 
     it "throws error if normal item being added has quality <=0" do
-        bad_milk = Item.new("Bad milk", 10, -1)
+        bad_milk = NormalItem.new("Bad milk", 10, -1)
         gilded_rose = GildedRose.new
         expect { gilded_rose.add_item(bad_milk) }.to raise_error "Bad milk's quality cannot be be 0 or less"
     end
