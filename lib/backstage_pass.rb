@@ -1,0 +1,2 @@
+class BackstagePass < Item
+end

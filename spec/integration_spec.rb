@@ -67,6 +67,14 @@ describe GildedRose do
         expect(gilded_rose.items[0].sell_in).to eq 9
     end
 
+    it "doesn't decrease item quality of Sulfuras" do
+        sulfuras = Sulfuras.new("Sulfuras, Hand of Ragnaros", 10, 50)
+        gilded_rose = GildedRose.new
+        gilded_rose.add_item(sulfuras)
+        gilded_rose.update_quality
+        expect(gilded_rose.items[0].quality).to eq 50
+    end
+
 
     #Item quality can never be below zero
 end

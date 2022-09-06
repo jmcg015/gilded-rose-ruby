@@ -4,6 +4,7 @@ require 'gilded_rose'
 require 'item'
 require 'aged_brie'
 require 'sulfuras'
+require 'backstage_pass'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
