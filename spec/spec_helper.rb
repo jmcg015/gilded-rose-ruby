@@ -6,6 +6,7 @@ require 'normal_item'
 require 'aged_brie'
 require 'sulfuras'
 require 'backstage_pass'
+require 'conjured'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,

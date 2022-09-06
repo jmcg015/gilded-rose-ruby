@@ -75,6 +75,4 @@ describe GildedRose do
         expect(gilded_rose.items[0].quality).to eq 50
     end
 
-
-    #Item quality can never be below zero
 end
