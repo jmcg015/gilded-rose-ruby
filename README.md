@@ -1,19 +1,42 @@
 # Gilded Rose - Ruby
 
+## How to Run
+
+```terminal
+cd gilded-rose-rb
+bundle install
+rspec
+```
+
 ## The Challenge
 
-I chose [this legacy code](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/ruby), translated by Emily Bache, in Ruby. The aim of this project was to practice good design and OOP principles by refactoring the legacy code. The requirements were:
+I chose [this legacy code](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/ruby), translated by Emily Bache, in Ruby. The aim of this project was to practice good design and OOP principles by refactoring the legacy code. I chose Ruby as I hadn't used it in a while and wanted to brush up on my Ruby skills. I also wanted to practice my OOP skills. 
 
-  >All items have a SellIn value which denotes the number of days we have to sell the item. All items have a Quality value which denotes how valuable the item is. At the end of each day our system lowers both values for every item. Pretty simple, right? Well this is where it gets interesting:
+The Item class could not be altered, so each item has a class which inherits from Item. I did think of having a Legendary/Unique class which would take Aged Brie, Sulfuras and the BackstagePass classes as subclasses, but decided that the approach I took didn't increase or duplicate code anyway, as those subclasses would have had to have a different update method anyway. 
 
-  >Once the sell by date has passed, Quality degrades twice as fast
-  The Quality of an item is never negative
-  “Aged Brie” actually increases in Quality the older it gets
-  The Quality of an item is never more than 50
-  “Sulfuras”, being a legendary item, never has to be sold or decreases in Quality
-  “Backstage passes”, like aged brie, increases in Quality as it’s SellIn value approaches; Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert
-  We have recently signed a supplier of conjured items. This requires an update to our system:
+Initially the bulk of the logic was in the GildedRose class, which has been removed. The quality checks and logic now happen in the respective item classes, with GildedRose being responsible for adding items.
 
-  >“Conjured” items degrade in Quality twice as fast as normal items
-  Feel free to make any changes to the UpdateQuality method and add any new code as long as everything still works correctly. However, do not alter the Item class or Items property as those belong to the goblin in the corner who will insta-rage and one-shot you as he doesn’t believe in shared code ownership (you can make the UpdateQuality method and Items property static if you like, we’ll cover for you)."
+The requirements for the different items were as follows:
 
+Normal items:
+- Quality reduces by 1 each day, but cannot go below 0
+- Item quality decreases by 2 when sell-by date has gone
+- All item quality is never over 50
+
+Aged Brie:
+- Item quality increases by 1 as it ages
+- Quality never exceeds 50
+
+Sulfuras:
+- Is a legendary item so the quality and sell-by date never decrease
+- Quality never exceeds 50
+
+Backstage Pass:
+- Quality increases by 1 in value if 10+ days before the event
+- Quality increases by 2 if if there are more than 5 but 10 or fewer days before the event
+- Quality increases by 3 if there are 5 or fewer days before the event
+- Quality is 0 if the event has happened
+
+Conjured:
+- Item quality decreases by 2
+- Item quality decreases by 4 when passed sell-by date
