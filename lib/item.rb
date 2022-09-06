@@ -1,3 +1,4 @@
+#DO NOT CHANGE THIS CLASS
 class Item
   attr_accessor :name, :sell_in, :quality
 
