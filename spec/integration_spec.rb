@@ -58,6 +58,15 @@ describe GildedRose do
         expect { gilded_rose.add_item(bad_milk) }.to raise_error "Bad milk's quality cannot be be 0 or less"
     end
 
+    it "increases the quality of aged brie as sell_in decreases" do
+        aged_brie = AgedBrie.new("Aged Brie", 10, 40)
+        gilded_rose = GildedRose.new
+        gilded_rose.add_item(aged_brie)
+        gilded_rose.update_quality
+        expect(gilded_rose.items[0].quality).to eq 41
+        expect(gilded_rose.items[0].sell_in).to eq 9
+    end
+
 
     #Item quality can never be below zero
 end
