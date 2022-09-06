@@ -1,0 +1,3 @@
+class AgedBrie < Item
+
+end
