@@ -3,6 +3,7 @@ require 'simplecov-console'
 require 'gilded_rose'
 require 'item'
 require 'aged_brie'
+require 'sulfuras'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
