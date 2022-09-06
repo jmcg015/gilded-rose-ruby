@@ -75,4 +75,11 @@ describe GildedRose do
         expect(gilded_rose.items[0].quality).to eq 50
     end
 
+    it "reduces conjured item quality by 2 before sell by date" do
+        conjured = Conjured.new("Magic sword", 12, 20)
+        gilded_rose = GildedRose.new
+        gilded_rose.add_item(conjured)
+        gilded_rose.update_quality
+        expect(gilded_rose.items[0].quality).to eq 18
+    end
 end
